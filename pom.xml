@@ -5,7 +5,7 @@
 
 	<groupId>de.dagere.kieker</groupId>
 	<artifactId>kieker-source-instrumentation-parent</artifactId>
-	<version>1.15.17-SNAPSHOT</version>
+	<version>1.15.18-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>kieker-source-instrumentation-parent</name>
