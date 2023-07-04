@@ -5,7 +5,7 @@
 
   <artifactId>kieker-source-instrumentation-library</artifactId>
   <groupId>de.dagere.kieker</groupId>
-  <version>1.15.17</version>
+  <version>1.15.18-SNAPSHOT</version>
 
   <name>kieker-source-instrumentation-library</name>
   <description>Enables the instrumentation of Java projects by automatic insertion of the source code</description>
@@ -193,7 +193,7 @@
     <connection>scm:git:ssh://github.com:DaGeRe/kieker-source-instrumentation-dagere.git</connection>
     <developerConnection>scm:git:git@github.com:DaGeRe/kieker-source-instrumentation-dagere.git</developerConnection>
     <url>https://git@github.com:DaGeRe/kieker-source-instrumentation-dagere.git</url>
-    <tag>kieker-source-instrumentation-library-1.15.17</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
