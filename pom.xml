@@ -5,7 +5,7 @@
 
 	<groupId>de.dagere.kieker</groupId>
 	<artifactId>kieker-source-instrumentation-parent</artifactId>
-	<version>1.15.17</version>
+	<version>1.15.18-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>kieker-source-instrumentation-parent</name>
@@ -67,6 +67,6 @@
 		<connection>scm:git:ssh://github.com:DaGeRe/kieker-source-instrumentation-dagere.git</connection>
 		<developerConnection>scm:git:git@github.com:DaGeRe/kieker-source-instrumentation-dagere.git</developerConnection>
 		<url>https://git@github.com:DaGeRe/kieker-source-instrumentation-dagere.git</url>
-		<tag>kieker-source-instrumentation-parent-1.15.17</tag>
+		<tag>HEAD</tag>
 	</scm>
 </project>
