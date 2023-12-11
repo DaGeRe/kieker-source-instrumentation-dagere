@@ -124,7 +124,7 @@
     <dependency>
       <groupId>net.kieker-monitoring</groupId>
       <artifactId>kieker</artifactId>
-      <version>1.15.3</version>
+      <version>1.15.4</version>
     </dependency>
 
     <dependency>
