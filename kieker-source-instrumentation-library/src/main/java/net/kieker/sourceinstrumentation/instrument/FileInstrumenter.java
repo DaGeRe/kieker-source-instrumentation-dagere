@@ -14,7 +14,10 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.PackageDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.EnumDeclaration;
+import com.github.javaparser.ast.body.InitializerDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.type.ClassOrInterfaceType;
 
 import net.kieker.sourceinstrumentation.InstrumentationConfiguration;
 import net.kieker.sourceinstrumentation.parseUtils.JavaParserProvider;
@@ -42,6 +45,10 @@ public class FileInstrumenter {
       
       for (ClassOrInterfaceDeclaration clazz : ParseUtil.getClasses(unit)) {
          hasChanges |= handleTypeDeclaration(clazz, packageName);
+         if (configuration.isStrictMode() && isExtendedWith(clazz, "Application")) {
+            addAndroidStrictMode(clazz);
+            Files.write(file.toPath(), unit.toString().getBytes(StandardCharsets.UTF_8));
+         }
       }
       
       for (EnumDeclaration enumDecl : ParseUtil.getEnums(unit)) {
@@ -54,6 +61,23 @@ public class FileInstrumenter {
       }
    }
 
+   private boolean isExtendedWith(ClassOrInterfaceDeclaration clazz, String extendsName) {
+      for (ClassOrInterfaceType type : clazz.getExtendedTypes()) {
+         if (type.getNameAsString().equals(extendsName)) {
+            return true;
+         }
+      }
+      return false;
+   }
+
+   private boolean addAndroidStrictMode(ClassOrInterfaceDeclaration clazz) {
+      BlockStmt staticInitializer = new BlockStmt();
+      staticInitializer.addStatement("android.os.StrictMode.ThreadPolicy policy = new android.os.StrictMode.ThreadPolicy.Builder().permitAll().build();");
+      staticInitializer.addStatement("android.os.StrictMode.setThreadPolicy(policy);");
+      InitializerDeclaration staticInitializerDeclaration = new InitializerDeclaration(true, staticInitializer);
+      clazz.getMembers().addFirst(staticInitializerDeclaration);
+      return true;
+   }
 
    private boolean handleTypeDeclaration(final TypeDeclaration<?> type, final String packageName) throws IOException {
       TypeInstrumenter instrumenter = new TypeInstrumenter(configuration, unit, type);
