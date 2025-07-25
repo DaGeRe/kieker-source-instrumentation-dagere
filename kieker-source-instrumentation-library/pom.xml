@@ -129,7 +129,7 @@
     <dependency>
       <groupId>de.dagere.kopeme</groupId>
       <artifactId>kopeme-core</artifactId>
-      <version>1.4.0</version>
+      <version>1.4.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>
