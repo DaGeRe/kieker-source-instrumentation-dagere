@@ -76,6 +76,17 @@ public class TestSourceInstrumentation {
       MatcherAssert.assertThat(changedSource, Matchers.containsString("new " + recordName));
    }
 
+   public static void testFileIsNotInstrumented(final File testFile, final String fqn, final String recordName) throws IOException {
+      String changedSource = FileUtils.readFileToString(testFile, StandardCharsets.UTF_8);
+
+      MatcherAssert.assertThat(changedSource, Matchers.not(Matchers.containsString("import kieker.monitoring.core.controller.MonitoringController;")));
+      MatcherAssert.assertThat(changedSource, Matchers.not(Matchers.containsString("import kieker.monitoring.core.registry.ControlFlowRegistry;")));
+      MatcherAssert.assertThat(changedSource, Matchers.not(Matchers.containsString("import kieker.monitoring.core.registry.SessionRegistry;")));
+
+      MatcherAssert.assertThat(changedSource, Matchers.not(Matchers.containsString("signature = \"" + fqn)));
+      MatcherAssert.assertThat(changedSource, Matchers.not(Matchers.containsString("new " + recordName)));
+   }
+
    @Test
    public void testInnerConstructor() throws IOException {
       SourceInstrumentationTestUtil.initSimpleProject("/example_instanceInnerClass/");
