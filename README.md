@@ -12,7 +12,7 @@ If you want to use kieker-source-instrumentation into your project to instrument
 <dependency>
 	<groupId>de.dagere.kieker</groupId>
 	<artifactId>kieker-source-instrumentation-library</artifactId>
-	<version>1.15.1</version>
+	<version>2.0.1</version>
 </dependency>
 ```
 
@@ -20,13 +20,13 @@ to your project. Then call `InstrumentKiekerSource` with a `InstrumentationConfi
 
 ## Starter Usage
 
-To instrument the project `$PROJECT` using source instrumentation, build this project (`mvn clean package`) and then call `java -jar kieker-source-instrumentation-starter/target/kieker-source-instrumentation-1.15.1-SNAPSHOT.jar --folder=$PROJECT`. To execute the project with instrumentation, add Kieker to the build path of your project, e.g. using
+To instrument the project `$PROJECT` using source instrumentation, build this project (`mvn clean package -P buildStarter`) and then call `java -jar kieker-source-instrumentation-starter/target/kieker-source-instrumentation-1.15.1-SNAPSHOT.jar --folder=$PROJECT`. To execute the project with instrumentation, add Kieker to the build path of your project, e.g. using
 
 ```
 <dependency>
 	<groupId>net.kieker-monitoring</groupId>
 	<artifactId>kieker</artifactId>
-	<version>1.15</version>
+	<version>2.0.1</version>
 </dependency>
 ```
 in maven. Afterwards, you can build and run your instrumented project without AspectJ.
