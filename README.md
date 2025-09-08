@@ -41,3 +41,7 @@ You might also specify the following options:
 ## Versioning
 
 The major version of kieker-source-instrumentation equals the major version of Kieker, i.e. versions built to instrument with Kieker 1.15 will be named 1.15.x (or 1.15.x-SNAPSHOT).
+
+## Citing
+
+This project is part of ongoing research on minimal overhead observability. If you use this project in scientific context, please cite *David Georg Reichelt, Stefan Kühne and Wilhelm Hasselbring: Towards Solving the Challenge of Minimal Overhead Monitoring, ICPE '23 Companion, https://doi.org/10.1145/3578245.3584851*
